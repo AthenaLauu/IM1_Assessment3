@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed the Frog</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <!-- Fonts from Google Fonts: https://fonts.google.com/ -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Lilita+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- MAIN GAME: the pond moves but the frog stays in the corner -->
+    <!--
+      This project is a small interactive game based on
+      hover interaction.
+
+      I chose a frog and pond environment because I wanted
+      to make a simple interaction feel more playful.
+
+      The player uses their cursor to explore the pond and
+      find insects. The cursor also works as a flashlight,
+      so the player cannot see the whole environment at once.
+
+      I wanted to create curiosity by making the player
+      discover objects instead of showing everything
+      immediately.
+
+      The main interaction is hovering, so there is no
+      need to click to catch insects.
+
+      The game has three different endings depending on
+      what the player discovers and feeds the frog.
+    -->
+
+    <main id="game">
+      <div id="world">
+        <div id="scenery"></div>
+        <div id="insects"></div>
+      </div>
+
+      <!-- The dark overlay creates a spotlight around the cursor. -->
+      <div id="darkness" aria-hidden="true"></div>
+      <div id="light" aria-hidden="true"></div>
+      
+<!--
+      FROG CHARACTER
+
+      The frog stays at the bottom-left corner.
+
+      I decided to keep the frog in one position
+      because I wanted the player to focus on
+      exploring the pond.
+
+      The frog has two main images:
+      one with its mouth closed and another with
+      its mouth open.
+
+      JavaScript changes these images when the
+      player catches an insect.
+    -->
+      <div class="frog-pad"></div>
+      <img id="frog" src="images/frog.png" alt="A frog waiting for insects" draggable="false">
+      <div id="tongue" aria-hidden="true"></div>
+
+      <header class="heading">
+        <h1>FEED THE FROG ✦</h1>
+        <p>MOVE TO THE EDGES TO EXPLORE THE POND.<br>HOVER OVER MOSQUITOES. AVOID LADYBUGS!</p>
+      </header>
+
+      <!-- Feedback helps players understand what happened. -->
+      <section id="game-info" aria-live="polite">
+        <p id="message">FIND THE MOSQUITOES!</p>
+        <div id="game-stats">
+          <p id="score">0 / 3</p>
+          <span class="stat-divider"></span>
+          <p id="hearts">♥ ♥ ♥</p>
+        </div>
+      </section>
+
+      <!-- All three endings share one screen; JavaScript changes the content. -->
+      <div id="ending" role="dialog" aria-modal="true" aria-labelledby="ending-title" hidden>
+        <div class="ending-content">
+          <img id="ending-frog" src="images/frog8.png" alt="Frog ending illustration">
+          <h2 id="ending-title">FROG IS FULL!</h2>
+          <p id="ending-description"></p>
+          <button id="restart-button" type="button">PLAY AGAIN ↗</button>
+        </div>
+      </div>
+
+      <p class="bottom-hint">MOVE TO THE EDGES TO EXPLORE ↔ ↕</p>
+    </main>
+</body>
+</html>
